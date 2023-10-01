@@ -1,0 +1,363 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    
+//------------------------------------------------
+//------------------------------------------------
+//    
+//------------------------------------------------
+.p-feature {
+    width: 100%;
+    background-image : url( "../images/features/background-pc.jpg" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    margin-top: 80px;
+}
+
+.p-feature__inner {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    color: g.$color-font-b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin: auto;
+    margin-top : 89px;
+    margin-bottom:80px;
+}
+
+//  リスト ul
+.p-feature__content {
+    margin-top : 63px;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items : center;
+    width: 100%;
+    max-width: 1181px;
+    gap : 35px;
+}
+
+
+//----------------------------------------
+//  レスポンシブ - PC幅のみ
+//----------------------------------------
+@include g.mq('md-') {
+    //  アイテム li
+    .p-feature__item {
+        width: 100%;
+        margin : auto;
+        padding-top: 26px;
+        padding-bottom: 32px;
+        padding-left: 0;//101px;
+        padding-right: 0;//104px;
+        //  ※教訓 : 行数が変化するものはgridを使ってはいけない。次回からflexで。
+        display: grid;
+        grid-template-rows : 36px 35px 1fr;   //  縦
+        grid-template-columns: 45% 55%;  //  横
+        column-gap: 78px;
+        //gridアイテムの位置指定
+        background-color : g.$color-white;
+        border-radius: 60px;
+        
+        text-align:left;
+
+        //  個別調整
+        &:nth-child(2){
+            .p-feature__itempoint{
+                margin-top: 27px;
+            }
+            .p-feature__itemtitle{
+                margin-top: 43px;
+            }
+            .p-feature__itemlead{
+                margin-top: 51px;
+//                margin-right : 107px;
+                max-width: 71%;
+            }
+        }
+        //  個別調整
+        &:nth-child(3){
+            margin-top: -4px;
+            padding-bottom: 45px;
+            grid-template-rows : 36px 61px 1fr;   //  縦
+            .p-feature__itemtitle{
+            }
+        }
+        &:nth-child(4){
+            margin-top: -1px;
+            padding-bottom: 43px;
+            .p-feature__itemlead{
+//                margin-right: 80px;
+                max-width: 100%;
+            }
+        }
+
+        //  記事が右、画像が左( 通常時 )
+        &[data-side="right"]{
+            padding-left: 29px;
+            padding-right: 0px;
+
+            .p-feature__itemtitle{
+                margin-left: 4px;
+                line-height: 30px;
+                max-width: 69%;
+            }
+            .p-feature__itemlead {
+                max-width: 71% ;
+            }
+        }
+
+        //  記事が左、画像が右
+        &[data-side="left"]{
+            padding-left: 103px;
+            padding-right: 139px;
+            grid-template-columns: 48% 48%;  //  横
+            column-gap: 78px;
+    
+            .p-feature__itempoint {
+                grid-column : 1/2;
+            }
+            .p-feature__itemtitle {
+                grid-column : 1/2;
+            }
+            .p-feature__itemimage {
+                grid-column : 2/3;
+                margin-right: 0px;
+            }
+    
+            .p-feature__itemlead {
+                grid-column : 1/2;
+                //margin-right : 80px;
+            }    
+        }
+    
+        .p-feature__itempoint {
+            grid-column : 2/3; // 横ライン
+            grid-row : 1/2; // 縦ライン
+            margin-top: 16px;
+            span{
+                display : inline-block;
+                padding: 1px 23px;
+                width: object-fit;
+                background-color : g.$color-gold;
+                color : g.$color-font-w;
+                font-size: 20px;
+            }
+        }
+        
+        .p-feature__itemtitle {
+            grid-column : 2/3; // 横ライン
+            grid-row : 2/3; // 縦ライン
+            margin-top : 32px;
+            font-size : 20px;
+            &:first-letter{
+                font-size: 24px;
+                line-height: 20px;
+                color : g.$color-gold;
+                margin-left: -2px;
+            }
+        }
+        
+        .p-feature__itemimage {
+            grid-column : 1/2; // 横ライン
+            grid-row : 1/4; // 縦ライン
+            margin:auto;
+            margin-right: 0px;
+            //aspect-ratio: 446/275;
+            picture{
+                //width:object-fit;
+            }
+
+        }
+        
+        .p-feature__itemlead {
+            grid-column : 2/3; // 横ライン
+            grid-row : 3/4; // 縦ライン
+            margin-top : 41px;
+            font-size: 16px;
+            line-height: 23px;
+            letter-spacing : 1.3px;
+        }
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ - タブレット幅
+//----------------------------------------
+@include g.mq('-lg') {
+}
+
+//----------------------------------------
+//  レスポンシブ - スマホ幅
+//----------------------------------------
+@include g.mq('-md') {
+    .p-feature {
+        margin-top: 34px;
+    }
+    
+    .p-feature__inner {
+        margin-top : 34px;
+        margin-bottom:33px;
+    }
+    //  リスト ul
+    .p-feature__content {
+        margin-top : 28px;
+        display: flex;
+        max-width: calc( 100% - 24px );       
+        gap : 24px;
+        //  アイテム li
+        .p-feature__item {
+            padding-top: 29px;
+            padding-bottom: 30px;
+            padding-left: 32px;
+            padding-right: 32px;
+  
+            //  flexで直す
+            display: flex;
+            flex-direction :column;
+            align-items : center;
+            
+//            grid-template-rows : 23px 52px 1fr 1fr;   //  縦
+//            grid-template-columns: 1fr;  //  横
+            //gridアイテムの位置指定
+            background-color : g.$color-white;
+            border-radius: 30px;
+            filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.10));
+            
+  
+    
+            //  個別調整
+            &:nth-child(2){
+                padding-bottom: 29px;
+                .p-feature__itempoint {
+                    margin-top: 0px;
+                }
+                .p-feature__itemtitle {
+                    margin-top: 13px;
+                    margin-left: 4px;
+                }
+                .p-feature__itemimage {
+                    margin-right: auto;
+                    margin-top:14px;
+                }
+                .p-feature__itemlead {
+                    margin-top:19px;
+                    margin-left: 4px;
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+            //  個別調整
+            &:nth-child(3){
+                margin-top: 1px;
+                padding-bottom: 31px;
+                .p-feature__itemtitle {
+                    margin-top:12px;
+                    line-height: 29px;
+                }
+                .p-feature__itemlead {
+                    margin-top: 6px;
+                }
+            }
+            &:nth-child(4){
+                margin-top: 1px;
+                padding-bottom: 30px;
+                .p-feature__itemtitle {
+                    margin-top: 4px;
+                    margin-left: 4px;
+                    //margin-left: 4px;
+                }
+                .p-feature__itemlead {
+                    max-width: 100%;
+                    margin-left: 2px;
+                }
+            }
+    
+            //  記事が右、画像が左( 通常時 )
+            &[data-side="right"]{
+                padding-right: 29px;                
+                .p-feature__itemlead {
+                    max-width: 100%;
+                }    
+            }
+    
+            //  記事が左、画像が右
+            &[data-side="left"]{
+                padding-left: 29px;
+                padding-right: 29px;
+                grid-template-columns:1fr;
+                .p-feature__itempoint {
+                }
+                .p-feature__itemtitle {
+                }
+                .p-feature__itemimage {
+                    margin-right: auto;
+                }        
+                .p-feature__itemlead {
+                    margin-right : 0px;
+                }    
+            }
+          
+        
+            .p-feature__itempoint {
+                //grid-column : 1/2; // 横ライン
+                //grid-row : 1/2; // 縦ライン
+                margin-right: auto;
+                margin-top: 0px;
+                span{
+                    font-size: 14px;
+                    padding: 0px 19px 0px 13px;
+                    display : inline-block;
+                    //width: object-fit;
+                    background-color : g.$color-gold;
+                    color : g.$color-font-w;
+
+                }
+            }
+    
+            
+            .p-feature__itemtitle {
+//                grid-column : 1/2; // 横ライン
+//                grid-row : 2/3; // 縦ライン
+                margin-top : 10px;
+                font-size : 20px;
+                margin-right: auto;
+                text-align:left;
+                &:first-letter{
+                    font-size: 24px;
+                    line-height: 20px;
+                    color : g.$color-gold;
+                    margin-left: -2px;
+                }
+    
+            }
+            
+            .p-feature__itemimage {
+//                grid-column : 1/2; // 横ライン
+//                grid-row : 3/4; // 縦ライン
+                //margin : auto;
+                //margin-right: 0px;
+                width: 100%;
+                margin:auto;
+                margin-top:7px;
+                height: fit-content;
+                max-width: 291px;
+                max-height: 180px;
+            }
+            
+            .p-feature__itemlead {
+//                grid-column : 1/2; // 横ライン
+//                grid-row : 4/5; // 縦ライン
+                margin-top : 11px;
+                margin-left: -2px;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing : 1.1px;
+                text-align:left;
+            }
+        }
+    }
+}

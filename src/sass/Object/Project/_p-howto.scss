@@ -1,0 +1,209 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    
+//------------------------------------------------
+.p-howto {
+    width: 100%;
+    margin-top: 80px;
+}
+
+.p-howto__inner {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    color: g.$color-font-b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin: auto;
+    margin-bottom:80px;
+}
+
+.p-howto__content {
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    align-items : flex-start;
+    gap: 34px;
+    margin-top: 64px;
+    max-width: min( 100%, calc( 100% - 40px)  );
+
+}
+
+.p-howto__item {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    width: 100%;
+    max-width: 270px;
+    text-align:left;
+
+    .p-howto__itemimage {
+        width: 100%;
+        height: 100%;
+        max-width: 268px;
+        max-height: 268px;
+    }
+    
+    .p-howto__itemcontent {
+        margin-top : 20px;
+        margin-left: 8px;
+        width: 100%;
+        .p-howto__itemhead {
+            width: 100%;
+            display:flex;
+            flex-direction : row;
+            .p-howto__itemno {
+                font-size: 24px;
+                color :g.$color-green;
+                font-family : g.$font-Futura;
+                font-weight: 700;
+                transform:translate( 0, 3px );
+            }
+            .p-howto__itemtitle {
+                width: object-fit;
+                font-size: 20px;
+                margin:auto;
+                transform:translate(-12px, 0 );
+            }
+        }
+        .p-howto__itemlead {
+            margin-top: 7px;
+            font-size: 16px;
+            line-height: 23px;
+        }
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+    .p-howto__item {
+        .p-howto__itemcontent {
+            .p-howto__itemhead {
+                .p-howto__itemno {
+                    font-size: g.vwclamp( 22,24,24);
+                }
+                .p-howto__itemtitle {
+                    font-size: g.vwclamp( 18, 20, 20 );
+                }
+            }
+            .p-howto__itemlead {
+                font-size: g.vwclamp( 14, 16, 16);
+            }
+        }
+    }
+    
+}
+
+@include g.mq('-md') {
+    .p-howto {
+        margin-top: 32px;
+    }
+    
+    .p-howto__inner {
+        margin-bottom:32px;
+    }
+    .p-howto__content {
+        flex-direction : column;
+        gap: 16px;
+        margin-top: 28px;
+        max-width: calc( 100% - 24px );
+    }
+    .p-howto__item {
+        flex-direction : row;
+        width: 100%;
+        max-width: 100%;
+        text-align:left;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .p-howto__itemimage {
+            width: 100%;
+            height: 100%;
+            max-width: 160px;
+            max-height: 160px;
+        }
+        
+        .p-howto__itemcontent {
+            margin-top : 0px;
+            margin-left: 16px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            .p-howto__itemhead {
+                width: 100%;
+                display:flex;
+                flex-direction : column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                .p-howto__itemno {
+                    font-size: 24px;
+                    color :g.$color-green;
+                    font-family : g.$font-Futura;
+                    font-weight: 700;
+                    transform:translate( 0, 0px );
+                }
+                .p-howto__itemtitle {
+                    width: 100%;
+                    font-size: 18px;
+                    margin:0;
+                    transform:translate(0px, 0 );
+                }
+            }
+            .p-howto__itemlead {
+                margin-top: 9px;
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+        //  個別調整
+        &:nth-child(2){
+            .p-howto__itemhead {
+                .p-howto__itemno {
+                    margin-top: -1px;
+                }
+                .p-howto__itemtitle {
+                    margin-top: 5px;
+                }
+            }
+            .p-howto__itemlead {
+                margin-top: 16px;
+            }
+        }
+        //  個別調整
+        &:nth-child(3){
+            .p-howto__itemhead {
+                .p-howto__itemno {
+                    margin-top: -1px;
+                }
+                .p-howto__itemtitle {
+                    margin-top: 5px;
+                }
+            }
+            .p-howto__itemlead {
+                margin-top: 16px;
+            }
+        }
+        //  個別調整
+        &:nth-child(4){
+            .p-howto__itemhead {
+                .p-howto__itemno {
+                    margin-top: -1px;
+                }
+                .p-howto__itemtitle {
+                    margin-top: -7px;
+                }
+            }
+            .p-howto__itemlead {
+                margin-top: 5px;
+            }
+        }
+    }
+}

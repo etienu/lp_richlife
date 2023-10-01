@@ -1,0 +1,104 @@
+@use "../../global" as g;
+//----------------------------------------
+//   ハンバーガーメニュー
+//----------------------------------------
+.p-hamburger__wrapper {
+    right: 0;
+    transition: 0.3s;
+    z-index: 520;
+}
+
+.p-hamburger {
+    width: g.rem(69);
+    height: g.rem(72);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto;
+    padding-left: g.rem(24);
+    gap: g.rem(8.5);
+    span {
+        width: g.rem(28);
+        height: g.rem(2);
+        border-radius: 20px;
+        background-color: g.$color-black;
+        transition: 0.3s;
+        margin-left: g.rem(-3);
+        &:nth-child(1) {}
+        &:nth-child(2) {
+            width: g.rem(22);
+        }
+        &:nth-child(3) {
+            margin-left: g.rem(-2);
+            width: g.rem(12);
+        }
+    }
+    transition: 0.3s;
+    &:hover {
+        cursor: pointer;
+    }
+    &.open {
+        span {
+            &:nth-child(1) {
+                transform: rotate(135deg) translate(g.rem(8), g.rem(-8));
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                width: g.rem(28);
+                margin-left: g.rem(0);
+                transform: rotate(-135deg) translate(g.rem(9), g.rem(5));
+            }
+        }
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+}
+
+@include g.mq('-md') {
+    .p-hamburger {
+        width: g.rem(50);
+
+        height: g.rem(72);
+        padding-left: 0;
+        margin-top: -3px;
+        gap: 3px;
+        span {
+            width: g.rem(16);
+            &:nth-child(1) {
+                margin-left: 11px;
+
+            }
+            &:nth-child(2) {
+                margin-left: 11px;
+                width: g.rem(16);
+            }
+            &:nth-child(3) {
+                margin-left: 11px;
+                width: g.rem(16);
+            }
+        }
+        &.open {
+            span {
+                &:nth-child(1) {
+                    transform: rotate(135deg) translate(g.rem(4), g.rem(-4));
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:nth-child(3) {
+                    width: g.rem(16);
+                    margin-left: g.rem(0);
+                    transform: rotate(-135deg) translate(g.rem(-5), g.rem(11));
+                }
+            }
+        }
+    
+    }
+}

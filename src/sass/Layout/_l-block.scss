@@ -1,0 +1,44 @@
+@use "../global" as g;
+//-------------------------------------------
+// どのレイアウトでも使いそうな汎用ブロック(枠組み)
+//-------------------------------------------
+.l-block {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    &.jc-start{
+        justify-content : flex-start;
+    }
+    &.jc-end{
+        justify-content : flex-end;
+    }
+
+    &.jc-start-pc{
+        justify-content : flex-start;
+    }
+    &.jc-end-pc{
+        justify-content : flex-end;
+    }
+}
+
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+}
+
+@include g.mq('-md') {
+    .l-block {
+        //  SP時は中央に
+        &.jc-start-pc{
+            justify-content : center;
+        }
+        &.jc-end-pc{
+            justify-content : center;
+        }
+    }
+}

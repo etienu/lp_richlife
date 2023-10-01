@@ -1,0 +1,884 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    
+//------------------------------------------------
+.p-real {
+}
+
+.p-real__inner {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    color: g.$color-font-b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin: auto;
+}
+
+
+.p-real__top {
+    position : relative;
+    background-color : g.$color-green;
+    height : 83px;
+    width: 100%;
+    max-width: min( calc(100% - 40px ), 1013px );
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top:-29px;
+    margin-left: 20px;
+    margin-right: 20px;
+    p{
+        font-size: 24px; 
+        color : g.$color-font-w;
+    }
+}
+
+
+.p-real__top__frame {
+    position : absolute;
+    border : 1px solid g.$color-black;
+    width: calc( 100% + 20px );
+    height: calc( 100% - 26px );
+    margin-left: 3px;
+    margin-top: -5px;
+    //  消す
+    &:before{
+        position : absolute;
+        content : "";
+        background-color : g.$color-green;
+        width:  64px;
+        height: 20px;
+        margin-top: 50px;
+        margin-left: -24px;
+    }
+    //  ハネ線
+    &:after{
+        position : absolute;
+        content : "";
+        background-color : g.$color-black;
+        width:  1px;
+        height: 40px;
+        margin-top: 52px;
+        transform:translate(29px, 0) rotate(37deg);
+    }
+}
+
+
+.p-real__scenewrapper {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 94px;
+    padding-bottom: 80px;
+    display:flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items:center;
+    overflow:hidden;
+
+    counter-reset: count;
+
+    .p-real__scene {
+        position:relative;
+        width: 100%;
+        height: 100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        counter-increment: count;
+
+        &:nth-child(2){
+            margin-top: 91px;
+
+            //  位置入れ替える
+            .p-real__scenecontent {
+                .p-real__scenecontent__inner{
+                    order: 1;
+                }
+                .p-real__scenecontent__outer{
+                    order: 0;
+                }
+            }
+        }
+        .p-real__scenebgwrapper {
+            width : 100%;
+            height: 100%;
+            .p-real__scenebg {
+                position:absolute;
+                left: 0;
+                margin-top : 187px;
+                width: 100vw;            
+                height: 80%;
+                background-color : g.$color-lightgray;
+                z-index: -1;
+            }
+        }
+        .p-real__sceneimage {
+            width: 100%;
+            max-width: min( calc(100% - 40px ), 1180px );
+            margin : auto;
+            height: 475px;
+            aspect-ratio: 1180/475;
+            //  SCENEの文字
+            position : relative;
+            &:before{
+                position : absolute;
+                content: "SCENE 0" counter(count);
+                font-size: 48px;
+                font-weight: 900;
+                font-family: g.$font-Futura;
+                top: -36px;
+                left: 38px;
+                letter-spacing: 1.0px;
+            }
+
+        }
+        .p-real__scenecontent {
+            display: flex;
+            position :relative;
+            margin-top : 60px;
+            width:100%;
+            max-width: min( calc(100% - 40px ), 1180px );
+            gap: 4%;
+            .p-real__scenecontent__inner {
+                position :relative;
+                padding : 72px 0px 80px 0px;
+                width: 39%;
+                margin-top: -2px;
+                margin-left: 3px;
+                text-align:left;
+                &.right{
+                    padding : 58px 0px 64px 0px;
+                    margin-left: auto;
+                    margin-right: 0;
+                    .p-real__scenecontent__bg {
+                        left: -27.5%;
+                        width: 142.5%;
+                    }
+                    .p-real__scenecontent__title {
+                        padding-left: 16px;
+                    }
+                }
+                //  innerの背景
+                .p-real__scenecontent__bg {
+                    position:absolute;
+                    left :-15%;
+                    top : 0;
+                    width: 143%;
+                    height: 100%;
+                    background-color : g.$color-white;
+                    z-index: -1;
+                }
+                //  innnerの内容
+                .p-real__scenecontent__title {
+                    background-color : g.$color-gold;
+                    color : g.$color-font-w;
+                    font-size: 24px;
+                    padding-bottom:3px;
+                }
+                
+                .p-real__scenecontent__lead {
+                    margin-top: 40px;
+                    font-size: 16px;
+                    letter-spacing: 1px;
+                    p{
+                        margin-top: 8px;
+                        margin-left: 8px;
+                        line-height: 23px;
+                        max-width: calc( 100% - 32px);
+                    }
+                    &[data-no="1"]{
+                        margin-top: 58px;
+                    }
+                    &[data-no="2"]{
+                        margin-top: 47px;
+                        p{
+                            margin-top: 17px;
+                            line-height: 23px;
+                        }
+                    }
+                    &[data-no="r1"]{
+                        margin-top: 35px;
+                        p{
+                            margin-left: 0;
+                        }
+                    }
+                    &[data-no="r2"]{
+                        margin-top: 47px;
+                        p{
+                            margin-left: 0;
+                            margin-top: 17px;
+                            line-height: 23px;
+                        }
+                    }
+
+                    .p-real__scenecontent__leadimage{
+                        picture{
+                            width: 100%;
+                        }
+                        &[data-no="l1"]{
+                            position : absolute;
+                            right: -10px;
+                            bottom : 80px;
+                        }
+                        &[data-no="l2"]{
+                            position : absolute;
+                            right: 0;
+                            top : 0;
+                            margin: 0 calc(50% - 50vw);
+                
+                        }
+                    }                    
+                }
+                
+                h4{
+                    position : relative;
+                    white-space : nowrap;
+                    display:flex;
+                    flex-direction:row;
+                    font-size: 20px;
+                    &:after{
+                        display:inline-block;
+                        content:"";
+                        width: 100%;
+                        height:1px;
+                        margin:auto;
+                        margin-left:16px;
+                        background-color : g.$color-black;
+                    }
+                }
+            }
+            //  外側の浮いてる画像
+            .p-real__scenecontent__outer {
+                display:flex;
+                flex-direction:row;
+                justify-content: space-between;
+                position:relative;
+                gap : 30px;
+                width: 57%;
+                &[data-side="right"]{
+                    right: 0px;
+                }
+                &[data-side="left"]{
+                    left: 0px;
+                }
+            }
+            //
+            .p-real__scenecontent__leadimage{
+                display:flex;
+                picture{
+                    display:block;
+                    width: fit-content;
+                    max-width: 313px;
+                }
+                &[data-no="pcl1"]{
+                    left: 0%;
+                    bottom : 0;
+                    margin-top: auto;
+                    margin-bottom: 12.5%;
+                }
+                &[data-no="pcl2"]{
+                    right: 0;
+                    top : 0;
+                    margin-bottom: auto;
+                    picture{
+                        width: fit-content;
+                        max-width: 313px;
+                    }    
+                }
+                &[data-no="pcr1"]{
+                    right: 0;
+                    bottom : 0;
+                    margin-top: auto;
+                }
+                &[data-no="pcr2"]{
+                    left: 0;
+                    bottom : 0;
+                    margin-top: 8%;
+                    margin-bottom: auto;
+                    picture{
+                        max-width: 331px;
+                    }
+                }
+            }
+        }// scene content END
+        .p-real__scenelineup {
+            display: flex;
+            flex-direction : column;
+            justify-content: center;
+            margin: auto;
+            margin-top :60px;
+            width: 100%;
+            max-width: 1019px;
+            &[data-no="2"]{
+                margin-top: 56px;
+                .p-real__scenelineup__subtitle {
+                    margin-top:6px;
+                }
+            }
+            .p-real__scenelineup__title {
+                position : relative;
+                white-space : nowrap;
+                display:flex;
+                flex-direction:row;
+                font-size: 20px;
+                line-height: 34px;
+                &:before{
+                    display:inline-block;
+                    content:"";
+                    width: 100%;
+                    height:1px;
+                    margin:auto;
+                    margin-right:16px;
+                    background-color : g.$color-black;
+                    transform: translate(0, 2px );
+                }
+                &:after{
+                    display:inline-block;
+                    content:"";
+                    width: 100%;
+                    height:1px;
+                    margin:auto;
+                    margin-left:16px;
+                    background-color : g.$color-black;
+                    transform: translate(0, 2px );
+                }
+
+            }
+            
+            .p-real__scenelineup__subtitle {
+                margin-top: 8px;
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            ul{
+                display: flex;
+                flex-direction:row;
+                justify-content: space-between;
+                gap : 48px;
+                li{
+                    text-align : left;
+                    .p-real__lineup-image {
+                    }
+                    .p-real__lineup-content {
+                        background-color : g.$color-lightgray;
+                        height: 150px;
+                        padding : 20px 20px 20px 20px;
+                        border-radius:0 0 10px 10px;
+                        filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.16));
+                        h4{
+                            font-size: 20px;
+                        }
+                        p{
+                            margin-top : 4px;
+                            font-size:16px;
+                        }
+                    }
+                }
+                &[data-no="2"]{
+                    li{
+                        .p-real__lineup-content {
+                            background-color : g.$color-lightgray;
+                            height: 103px;
+                        }                            
+                    }
+                }
+            }
+        }
+    }    
+}
+
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+    .p-real__top {
+        max-width:calc( 100% - 40px );
+        p{
+            font-size: 18px;
+        }
+    }
+    .p-real__top__frame {
+        
+    }
+    .p-real__scenewrapper{
+        .p-real__scene{
+            .p-real__sceneimage{
+                max-width: calc( 100% - 24px );
+            }
+            .p-real__scenecontent{
+                .p-real__scenecontent__inner{
+                    padding : 23px 12px 24px 12px;
+                    max-width: 100%;
+                    margin : auto;
+                    width :100%;
+                    &.right{
+                        padding : 23px 12px 50px 12px;
+                    }
+                    .p-real__scenebg{
+                        width: 100%;
+                        left : 0;
+                    }
+                    .p-real__scenecontent__lead {
+                        .p-real__scenecontent__leadimage{
+                            picture{
+                                max-width:none;
+                            }
+                            &[data-no="l1"]{
+                                margin-top: 17px;
+                                position :static;
+                                right: -10px;
+                                bottom : 80px;
+                            }
+                            &[data-no="l2"]{
+                                position : static;
+                                right: 0;
+                                top : 0;
+                                margin: 0;
+                                margin-top: 16px;
+                            }
+                            &[data-no="spr1"]{
+                                margin-top: 17px;
+                            }
+                            &[data-no="spr2"]{
+                                margin-top: 13px;
+                            }
+                        }                    
+
+                    }
+                }
+                .p-real__scenecontent__outer{
+                    display : none;
+                }
+                .p-real__scenecontent__leadimage{
+                    &[data-no="pcl1"]{
+                        right: 15%;
+                    }
+                    &[data-no="pcr1"]{
+                        right: 0%;
+                        left: 26%;
+                        bottom: 0;
+                        top: 56px;
+                    }
+                    &[data-no="pcr2"]{
+                        left: g.vwclamp( 70, 70, 70 );
+                    }
+                }
+            }// content
+            .p-real__scenelineup{
+                .p-real__scenelineup__title{
+                    &:before{
+                        margin-left: 12px;
+                    }
+                    &:after{
+                        margin-right: 12px;
+                    }
+                }
+                ul{
+                    max-width: min( calc(100% - 24px ), 100% );
+                    margin : auto;
+                    gap : g.vwmax( 24 , 991 );
+                }
+            }
+        }// scene
+    }// wrapper
+}
+
+@include g.mq('-md') {
+    .p-real {
+    }
+    
+    .p-real__inner {
+        margin: auto;
+        max-width: 100%;
+    }
+    
+    
+    .p-real__top {
+        height : 108px;
+        max-width: calc( 100% - 50px );
+        margin-top:-58px;
+        margin-left: -3px;
+        margin-right: 0;
+        p{
+            font-size: 16px; 
+            color : g.$color-font-w;
+            line-height: 22px;
+            margin-top: -6px;
+        }
+    }
+    
+    
+    .p-real__top__frame {
+        position : absolute;
+        border : 1px solid g.$color-black;
+        width: calc( 100% + 26px );
+        height: calc( 100% - 21px );
+        margin-left: 3px;
+        margin-top: -1px;
+        //  消す
+        &:before{
+            background-color : g.$color-green;
+            width:  22px;
+            height: 20px;
+            margin-top: 77px;
+            margin-left: -8px;
+        }
+        //  ハネ線
+        &:after{
+            background-color : g.$color-black;
+            width:  1px;
+            height: 25px;
+            margin-top: 85px;
+            transform:translate(12px, 0) rotate(12deg);
+        }
+    }
+    
+    
+    .p-real__scenewrapper {
+        width: 100%;
+        max-width: 100%;
+        padding-top: 46px;
+        padding-bottom: 29px;
+        display:flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items:center;
+        overflow:hidden;
+    
+        counter-reset: count;
+    
+        .p-real__scene {
+            position:relative;
+            width: 100%;
+            height: 100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            counter-increment: count;
+
+            &:nth-child(1){
+                .p-real__scenebg {
+                    margin-top : 13%;
+                    height: 87%;
+                }
+            }
+            &:nth-child(2){
+                margin-top: 38px;
+                .p-real__scenebg {
+                    margin-top : 25%;
+                    height: 85.7%;
+                }
+            }
+            .p-real__scenebg {
+                position:absolute;
+                left: 0;
+                width: 100vw;            
+                background-color : g.$color-lightgray;
+                z-index: -1;
+            }
+            .p-real__sceneimage {
+                width: 100%;
+                max-width: calc( 100% - 48px );
+                height: auto;
+                aspect-ratio: 327/176;
+                //  SCENEの文字
+                position : relative;
+                &:before{
+                    position : absolute;
+                    content: "SCENE 0" counter(count);
+                    font-size: 24px;
+                    font-weight: 900;
+                    font-family: g.$font-Futura;
+                    top: -19px;
+                    left: 19px;
+                    letter-spacing: 1.0px;
+                }
+    
+            }
+            .p-real__scenecontent {
+                position :relative;
+                display:flex;
+                justify-content: center;
+                margin-top : 22px;
+                width:100%;
+                max-width: 100%;
+            
+                .p-real__scenecontent__inner {
+                    padding : 23px 0px 24px 0px;
+                    background-color : g.$color-white;
+                    margin-top: -2px;
+                    text-align:left;
+                    filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.10));
+
+                    &.right{
+                        padding : 23px 0px 50px 0px;
+                        margin-left: 0;
+                        margin-top: 3px;
+                        .p-real__scenecontent__title {
+                            padding-left: 0px;
+                        }
+                    }
+                    .p-real__scenecontent__title {
+                        display: flex;
+                        flex-direction: column;
+                        align-items:flex-start;
+                        background-color : transparent;
+                        color : g.$color-font-w;
+                        font-size: 18px;
+                        padding-bottom:3px;
+                        &[data-no="1"]{
+                            span{
+                                background-color : g.$color-gold;
+                                display:block;
+                                width:fit-content;
+                                &:nth-child(1){
+                                    padding-top: 4px;
+                                    padding-bottom: 2px;
+                                    margin-left: 29px;
+                                    padding-right: 12px;
+                                    margin-right: 41px;
+                                }
+                                &:nth-child(2){
+                                    margin-top: 8px;
+                                    padding-top: 3px;
+                                    padding-bottom: 2px;
+                                    padding-left: 18px;
+                                    padding-right: 10px;
+                                    letter-spacing: 1px;
+                                    margin-left: 147px;
+                                }
+                            }
+                        }
+                        //  季節にあった彩りを
+                        &[data-no="r1"]{
+                            span{
+                                background-color : g.$color-gold;
+                                display:block;
+                                width:fit-content;
+                                letter-spacing: 2px;
+                                &:nth-child(1){
+                                    padding-top: 0px;
+                                    padding-bottom: 4px;
+                                    margin-left: 30px;
+                                    padding-right: 12px;
+                                    padding-left: 11px;
+                                    margin-right: 114px;
+                                }
+                                &:nth-child(2){
+                                    margin-left: 175px;
+                                    margin-top: 8px;
+                                    margin-right: auto;//30px;
+                                    padding-top: 3px;
+                                    padding-bottom: 2px;
+                                    padding-left: 11px;
+                                    padding-right: 0px;
+                                }
+                            }
+                        }
+                    }
+
+                    .p-real__scenecontent__lead {
+                        margin:auto;
+                        margin-top: 40px;
+                        font-size: 16px;
+                        letter-spacing: 1px;
+                        width: 100%;
+                        max-width: min( calc(100% - 40px ), 100% );
+                        p{
+                            margin-top: 8px;
+                            margin-left: 2px;
+                            line-height: 23px;
+                            max-width: calc( 100% - 10px);
+                        }
+                        &[data-no="1"]{
+                            margin-top: 21px;
+                        }
+                        &[data-no="2"]{
+                            margin-top: 25px;
+                            p{
+                                margin-top: 9px;
+                                line-height: 23px;
+                            }
+                        }
+                        &[data-no="r1"]{
+                            margin-top: 22px;
+                            p{
+                                margin-left: 0;
+                            }
+                        }
+                        &[data-no="r2"]{
+                            margin-top: 24px;
+                            p{
+                                margin-left: 0;
+                                margin-top: 10px;
+                                line-height: 23px;
+                                letter-spacing: 1.2px;
+                                max-width: calc( 100% - 4px );
+                            }
+                        }
+    
+                        .p-real__scenecontent__leadimage{
+                            picture{
+                                max-width:100%;
+                            }
+                            &[data-no="l1"]{
+                                margin-top: 17px;
+                                position :static;
+                                right: -10px;
+                                bottom : 80px;
+                            }
+                            &[data-no="l2"]{
+                                position : static;
+                                right: 0;
+                                top : 0;
+                                margin: 0;
+                                margin-top: 16px;
+                            }
+                        }                    
+                    }
+                    
+                    h4{
+                        font-size: 14px;
+                        &:after{
+                        }
+                    }
+                }
+                .p-real__scenecontent__leadimage{
+                    &[data-no="pcl1"]{
+                        position : absolute;
+                        left: 44%;
+                        bottom : 80px;
+                    }
+                    &[data-no="pcl2"]{
+                        position : absolute;
+                        right: g.vwclamp(70, 70, 70 );
+                        top : 0;
+                    }
+                    &[data-no="spr1"]{
+                        margin-top: 17px;
+                    }
+                    &[data-no="spr2"]{
+                        margin-top: 13px;
+                    }
+                }                    
+            }
+            .p-real__scenelineup {
+                margin-top :22px;
+                max-width: 100%;
+                &[data-no="2"]{
+                    margin-top: 21px;
+                    .p-real__scenelineup__subtitle {
+                        margin-top:0px;
+                    }
+                    ul{
+                        margin-top: 5px;
+                    }
+                }
+                .p-real__scenelineup__title {
+                    position : relative;
+                    white-space : nowrap;
+                    display:flex;
+                    flex-direction:row;
+                    font-size: 18px;
+                    line-height: 34px;
+                    letter-spacing : 1.5px;
+                    &:before{
+                        display:inline-block;
+                        content:"";
+                        width: 100%;
+                        height:1px;
+                        margin:auto;
+                        margin-right:16px;
+                        margin-left: 12px;
+                        background-color : g.$color-black;
+                        transform: translate(0, 2px );
+                    }
+                    &:after{
+                        display:inline-block;
+                        content:"";
+                        width: 100%;
+                        height:1px;
+                        margin:auto;
+                        margin-left:16px;
+                        margin-right: 12px;
+                        background-color : g.$color-black;
+                        transform: translate(0, 2px );
+                    }
+    
+                }
+                
+                .p-real__scenelineup__subtitle {
+                    margin-top: 0px;
+                    font-size: 14px;
+                    margin-bottom: 14px;
+                    margin-left: -9px;
+                    letter-spacing: 1.5px;
+                }
+                ul{
+                    margin: auto;
+                    margin-top : 5px;
+                    width: 100%;
+                    max-width: calc( 100% - 24px );
+                    gap : 0px;
+                    display:flex;
+                    justify-content:space-around;
+                    li{
+                        width: 100%;
+                        max-width:  g.vwclampsp( 104, 104, 150 );
+                        text-align : left;
+                        .p-real__lineup-image {
+                            max-width: g.vwclampsp( 104, 104, 150 );
+                            max-height:  g.vwclampsp( 104, 104, 150 );
+                        }
+                        .p-real__lineup-content {
+                            display:flex;
+                            flex-direction:column;
+                            justify-content: space-evenly;
+                            background-color : g.$color-lightgray;
+                            height: 100px;
+                            padding : 7px 10px 0px 12px;
+                            filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.16));
+                            h4{
+                                font-size: 14px;
+                                line-height: 20px;
+                            }
+                            p{
+                                font-size:13px;
+                                margin-bottom:15px;
+                                letter-spacing :0px
+                            }
+                        }
+                    }
+                    &[data-no="2"]{
+                        li{
+                            .p-real__lineup-content {
+                                background-color : g.$color-lightgray;
+                                height: 97px;
+                                margin-top: 0px;
+                                padding-top:10px;
+                                letter-spacing: -1.0px;
+                                h4{
+                                    font-size: 18px;
+                                    line-height: 22px;
+                                    width: calc( 100% - 10px );
+                                }
+                                p{
+                                    margin-bottom: 11px;
+                                }
+                            }                            
+                        }// li
+                    }//[data-no="2"]
+                }//ul
+            }//.p-real__scenelineup
+        }//  .p-real__scene
+    }//.p-real__scenewrapper
+    
+
+}//@include g.mq('-md') {
+

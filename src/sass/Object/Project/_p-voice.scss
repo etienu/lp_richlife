@@ -1,0 +1,430 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    
+//------------------------------------------------
+.p-voice {
+}
+
+.p-voice__inner {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    color: g.$color-font-b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:0px;
+    margin-bottom:80px;
+}
+
+//@include g.webpBg('.p-voice__author__inner', '../images/voice/background-pc' );
+.p-voice__author{
+    height: 240px;
+    width: 100%;
+    background-image : url( "../images/voice/background-pc.jpg" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    aspect-ratio: 1440/240;
+    margin-bottom: 36px;
+}
+
+.p-voice__author__inner{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin-top: -38px;
+        padding-top:50px;
+}
+.p-voice__author__content{
+    font-size: 16px;
+    margin-top:auto;
+    p{
+        &:first-child{
+            margin-left: -10px;
+            font-size: 24px;
+        }
+        &:nth-child(n+2){
+            font-size: 68px;
+            line-height: 101px;
+            letter-spacing: -3px;
+            margin-left: -11px;
+            span{
+                font-size: 90px;
+                letter-spacing: 0px;
+                margin-right: 0px;
+            }
+
+        }
+    }
+
+}
+.p-voice__author__leaf{
+    height: 203px;
+    width: 158px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    aspect-ratio: 158/203;
+
+    &.left{
+        background-image : url( "../images/voice/leaf_left-pc.png" );
+        transform : translate( -11px, 3px );
+    }
+    &.right{
+        background-image : url( "../images/voice/leaf_right-pc.png" );
+        transform : translate(  11px, 3px );
+    }
+
+}
+
+.p-voice__head {
+    .p-heading__h2 {
+
+    }
+}
+
+
+.p-voice__content {
+    width: 100%;
+    display: flex;
+    flex-direction : row;
+    justify-content: center;
+    margin-top: 62px;
+}
+
+
+.p-voice__reviewlist {
+    max-width: 1104px;
+    width: 100%;
+    display: flex;
+    flex-direction : row;
+    //  カウンター
+    counter-reset : count;
+}
+
+.p-voice__reviewitem {
+    width: 100%;
+    display: flex;
+    flex-direction : column;
+    background-color :g.$color-main;
+    //  カウント
+    counter-increment :count;
+    &:nth-Child(2){
+        background-color :g.$color-white;
+        .p-voice__itemlead {
+            width : calc( 100% - 8px );
+        }
+        .p-voice__itemreviewer {
+            transform : translate( -15px, 0 );
+        }
+
+    }
+    &:nth-Child(3){
+        .p-voice__itemcontent {
+            padding-right: 40px;
+            padding-left: 40px;
+            .p-voice__itemtitle {
+                p{
+                    padding-right: 15px;
+                }
+            }
+            .p-voice__itemlead {
+            }
+            .p-voice__itemreviewer {
+                transform : translate( 2px, 0 );
+            }
+        }
+    }
+    .p-voice__itemimage {
+        position : relative;
+        &:before{
+            position : absolute;
+            content : "REVIEW 0" counter(count);
+            width: 119px;
+            height: 34px;
+            padding-top: 6px;
+            background-color : g.$color-green;
+            font-size: 14px;
+            font-weight: 700;
+            color : g.$color-font-w;
+            font-family : g.$font-Futura;
+        }
+    }
+    
+    .p-voice__itemcontent {
+        padding : 23px 44px 23px 48px;
+        height: 100%;
+        text-align:left;
+        display:flex;
+        flex-direction:column;
+        justify-content: space-between;
+        .p-voice__itemarticle{
+            display:flex;
+            flex-direction:column;
+            width: 100%;
+            align-items:center;
+        }
+        .p-voice__itemtitle {
+            color : g.$color-font-w;
+            font-size: 20px;
+            width: 100%;
+            display: inline-block;
+            p{
+                width: fit-content;
+                background-color : g.$color-gold;
+                padding-left : 13px;
+                padding-right: 17px;
+                padding-bottom: 5px;
+                padding-top : 1px;
+                letter-spacing : 0px;
+                &:nth-child(n+2){
+                    margin-top: 9px;
+                }
+            }
+        }
+        
+        .p-voice__itemlead {
+            margin-top : 14px;
+            font-size:  16px;
+            line-height: 23px;
+        }
+        
+        .p-voice__itemreviewer {
+            margin-top: 8px;
+            font-size: 16px;
+            display:flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            transform : translate( -6px, 0 );
+        }
+    }
+}
+
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+    .p-voice__reviewitem{
+        .p-voice__itemcontent{
+            padding : 23px 20px 23px 20px;
+            .p-voice__itemtitle{
+                font-size: 16px;
+                p{
+                    &:nth-child(2){
+                        padding-right:14px;
+                    }
+                }
+            }
+        }
+        &:nth-child(2){
+            .p-voice__itemcontent{
+                p{
+                    &:nth-child(2){
+                        padding-right:11px;
+                    }
+                }
+            }
+        }
+        &:nth-child(3){
+            .p-voice__itemcontent{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+    }
+}
+
+
+@include g.mq('-md') {
+    .p-voice__inner{
+        margin-bottom: 33px;
+        .p-headline__wrapper{
+
+        }
+    }
+    .p-voice__author{
+        height: 166px;
+        margin-bottom: 0;
+    }
+    .p-voice__author__inner{
+        margin-top: 0px;
+        padding-top:32px;
+    }
+    .p-voice__author__content{
+        font-size: 16px;
+        margin-top:4px;
+        max-width: 237px;
+        p{
+            &:first-child{
+                margin-left: -10px;
+                font-size: 16px;
+            }
+            &:nth-child(n+2){
+                font-size: 32px;
+                line-height: 40px;
+                letter-spacing: -3px;
+                margin-left: -11px;
+                span{
+                    font-size: 48px;
+                    letter-spacing: 0px;
+                    margin-right: 0px;
+                }
+
+            }
+        }
+    }
+    .p-voice__author__leaf{
+        height: 103px;
+        width: 80px;
+        aspect-ratio: 80/103;
+
+        &.left{
+            background-image : url( "../images/voice/leaf_left-sp.png" );
+            transform : translate( -14px, 1px );
+        }
+        &.right{
+            background-image : url( "../images/voice/leaf_right-sp.png" );
+            transform : translate(  14px, 1px );
+        }
+
+    }
+
+    .p-voice__head {
+        .p-heading__h2 {
+        }
+    }
+
+
+    .p-voice__content {
+        margin-top: 30px;
+    }
+
+
+    .p-voice__reviewlist {
+        max-width: calc( 100% - 24px );
+        display: flex;
+        flex-direction : column;
+    }
+
+    .p-voice__reviewitem {
+        //  個別
+        &:nth-Child(1){
+            .p-voice__itemcontent {
+                .p-voice__itemtitle {
+                    p{
+                        &:nth-child(1){
+                            padding-top : 3px;
+                            padding-bottom : 3px;
+                            margin-right: 87px;
+                        }
+                        &:nth-child(2){
+                            padding-bottom : 3px;
+                            margin-left: 56px;
+                        }
+                    }
+                }
+                .p-voice__itemlead {
+                    margin-top: 18px;
+                }
+                .p-voice__itemreviewer {
+                }
+            }
+        }
+        &:nth-Child(2){
+            .p-voice__itemcontent {
+                .p-voice__itemtitle {
+                    p{
+                        font-size: 19px;
+                        &:nth-child(1){
+                            padding-bottom : 7px;
+                            margin-right: 67px;
+                        }
+                        &:nth-child(2){
+                            padding-bottom : 7px;
+                            margin-left: 21px;
+                        }
+                    }
+                }
+                .p-voice__itemlead {
+                    margin-top: 16px;
+                }
+                .p-voice__itemreviewer {
+                    margin-top: 19px;
+                }
+            }
+        }
+        &:nth-Child(3){
+            margin-top: 2px;
+            .p-voice__itemcontent {
+                padding: 16px 0px 15px 0px;
+                .p-voice__itemtitle {
+                    p{
+                        font-size: 20px;
+                        &:nth-child(1){
+                            padding-top : 3px;
+                            padding-bottom : 3px;
+                            margin-right:0;
+                            margin-left:auto;
+                        }
+                        &:nth-child(2){
+                            margin-top: 8px;
+                            padding-top : 3px;
+                            padding-bottom : 2px;
+                        }
+                    }
+                }
+                .p-voice__itemlead {
+                    margin-top: 20px;
+                }
+                .p-voice__itemreviewer {
+                }
+            }
+        }
+        //  画像
+        .p-voice__itemimage {
+            &:before{
+            }
+        }
+        
+        .p-voice__itemcontent {
+            max-width:calc( 100% - 62px );
+            padding: 16px 0px 15px 0px;
+            margin:auto;
+            .p-voice__itemarticle{
+
+            }
+            .p-voice__itemtitle {
+                display:flex;
+                flex-direction : column;
+                align-items:flex-start;
+
+                p{
+                    font-size: 18px;
+                    &:nth-child(1){
+                        margin-right:auto;
+                    }
+                    &:nth-child(n+2){
+                        margin-left:auto;
+                        margin-top: 9px;
+                    }
+                }
+            }
+            
+            .p-voice__itemlead {
+                margin-top: 16px;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            
+            .p-voice__itemreviewer {
+                margin-top: 20px;
+                font-size: 14px;
+            }
+        }
+    }
+}

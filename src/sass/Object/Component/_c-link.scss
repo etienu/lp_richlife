@@ -1,0 +1,26 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    汎用リンク
+//------------------------------------------------
+.c-link {
+    display: inline-block;
+    transition: opacity 0.3s;
+    i {
+        margin-left: 2px;
+    }
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+}
+
+//  アンダーライン
+.c-link__u {
+    @extend .c-link;
+    text-decoration: underline;
+}
+
+
+.c-link--blue {
+    color: #7dfffa;
+}

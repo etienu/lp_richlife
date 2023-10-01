@@ -1,0 +1,150 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    汎用見出し - サイト用調整、パターン
+//------------------------------------------------
+//  汎用ブロック
+.p-headline__wrapper {
+    width: 100%;
+    &[data-section="real5"]{
+    //    margin-left: 45px;        
+    }
+    &[data-section="voice"]{
+        margin-left: -3px;
+        .p-headline__h2 {
+            letter-spacing : g.rem( 0 );
+        }
+        .c-headline__h2{
+            &:before{
+                bottom:39px;
+                width: 160px;
+            }
+            &:after{
+                margin-top: 28px;
+                margin-left: 3px;
+            }
+        }
+    }
+    &[data-section="real"]{
+        margin-top: 97px;
+        .c-headline__h2{
+            &:before{
+                bottom:39px;
+                width: 160px;
+                margin-left: -4px;
+            }
+            &:after{
+                margin-top: 25px;
+                margin-left: -3px;
+            }
+        }
+    }
+}
+
+
+//  c-headline__h2と合わせる位置調整
+.p-headline__h2 {
+    display: block;
+    position: relative;
+    margin: auto;
+    letter-spacing: g.rem(0.5);
+    span {
+        font-family: g.$font-Futura;
+        letter-spacing: g.vwmax(5);
+    }
+    &.big {
+        font-size: g.vwclamp(30, 30, 56);
+        letter-spacing: g.vwmax(4.1);
+    }
+    &.left {
+        text-align: left;
+    }
+    &.line {
+        &:after {
+            display: inline-block;
+            position: relative;
+            content: "";
+            margin-left: 28px;
+            top: 50%;
+            width: 340px;
+            height: 1px;
+            background-color: g.$color-black;
+        }
+    }
+    &.ti1{
+        text-indent: 1px;
+    }
+}
+
+//  c-headline__h3と合わせる位置調整
+.p-headline__h3 {
+    margin-left: g.vwmax(146);
+}
+
+
+//--------------------------------
+//  レスポンシブ
+//--------------------------------
+@include g.mq('-md') {
+    .p-headline__wrapper {
+        width: 100%;
+        &[data-section="voice"]{
+            .p-headline__h2 {
+                &:before{
+                    bottom: 32px;
+                    width: 80px;
+                }
+                &:after{
+                    margin-top: 17px;
+                    font-size: 22px;
+                    letter-spacing: -0.3px;
+                    margin-left: 7px;
+                }
+            }
+        }
+        &[data-section="solution"]{
+            .p-headline__h2 {
+                line-height: 31px;
+            }
+        }
+        &[data-section="real"]{
+            margin-top: 42px;
+            .c-headline__h2{
+                font-size: 21px;
+                letter-spacing: 0;
+                line-height: 29px;
+                margin-top: 4px;
+                &:before{
+                    bottom : 34px;
+                    width: 80px;
+                }
+                &:after{
+                    margin-left: 0px;
+                    font-size: 21px;
+                    margin-top: 21px;
+                    letter-spacing: -0.8px;
+                }
+            }
+        }
+        .c-headline__h2{
+            &:before{
+                width: 80px;
+            }
+            &:after{
+            }
+        }
+    }    
+
+    .p-headline__h2 {
+        margin: auto;
+        font-size: g.rem(20);
+        &:after{
+            margin-top: 17px;
+            margin-left: -3px;
+            letter-spacing : g.rem(-2);
+        }
+        &:before{
+            bottom:32px;
+            width: 80px;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    汎用アイコン - サイト用調整、パターン
+//------------------------------------------------
+.p-icon {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    &[data-type="circle"]{
+        background-color: g.$color-black;
+        border-radius: 50%;
+        //  白文字
+        &:before {
+            color: g.$color-font-w;
+        }
+    
+    }
+    transition: color 0.3s, opacity 0.3s;
+    &:before {
+        position: absolute;
+        color: g.$color-font-b;
+        font-size: 20px;
+        left: 0;
+        top: 0;
+        transform: translate(50%, 50%);
+    }
+    &.fa-youtube {
+        &:before {
+            margin-top: 0px;
+            margin-left: -3px;
+        }
+    }
+    &.fa-twitter {
+        &:before {
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+    }
+    &.fa-instagram {
+        &:before {
+//            margin-top: 0px;
+//            margin-left: 2px;
+
+            margin-top: -7px;
+            margin-left: -12px;
+            font-size: 28px;
+            
+        }
+    }
+    &.fa-cart-shopping{
+        &:before {
+            font-size: 28px;
+        }
+    }
+    &.fa-arrow-right-to-bracket{
+        &:before {
+            font-size: 28px;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+}
+
+.p-icon__youtube {
+    &:before {
+        content: "\f167";
+    }
+}
+
+.p-icon__twitter {
+    &:before {
+        content: "\f099";
+        font-size: 20px;
+        margin-top: 2px;
+    }
+}
+
+.p-icon__instagram {
+    &:before {
+        content: "\f16d";
+        //font-size: 32px;
+    }
+}
+
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+}
+
+@include g.mq('-md') {
+    .p-icon{
+        &.fa-cart-shopping{
+            &:before {
+                font-size: 20px;
+            }
+        }
+        &.fa-arrow-right-to-bracket{
+            &:before {
+                font-size: 20px;
+            }
+        }
+    
+
+    }
+}

@@ -1,0 +1,164 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    セクション - ヒーロー
+//------------------------------------------------
+$btn-height: 132px;
+$btn-height-h: 40px;
+//  webpの出し分け
+@include g.webpBg('.p-hero .p-hero__background', '../images/hero/main_visual-pc' );
+.p-hero {
+    height: 481px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .p-hero__background {
+        height: 481px;
+        position: absolute;
+        content: "";
+        width: 100%;
+        //background-image : url( "../images/hero/main_visual-pc.jpg" );
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position:center;
+        aspect-ratio: 1440/680;
+        z-index: -1;
+    }
+
+    .p-hero__inner {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        max-width: calc(1440px - 260px + 40px );
+    }
+    .p-hero__content {
+        width: calc(100% - 40px );
+        max-width: calc( 888px + 40px );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color : g.$color-font-b;
+        text-align: left;
+        //  中央寄せから強引に移動
+        transform:translate(0,37px);
+        margin: auto;
+        margin-left: 20px; //  左寄せ
+        z-index: 0;
+        margin-top : 72px;
+        .p-hero__headline {
+            width: fit-content;
+            font-size: g.vwclamp(40,40,40);
+            font-weight: bold;
+            letter-spacing: g.rem(0);
+            background-color : white;
+            span{
+                display:inline-block;
+                line-height: g.rem(75);
+                padding-left: 24px;
+            }
+            &:nth-child(n+2){
+                margin-top: 13px;
+                span{
+                    padding-left: 22px;
+                }
+    
+            }
+    }
+        .p-hero__lead {
+            width: fit-content;
+            margin-left: 2px;
+            margin-top: 11px;
+            font-size: g.rem(24);
+            letter-spacing: g.rem( 0 );
+            background-color : white;
+            span{
+                display:inline-block;
+                line-height: g.rem(50);
+                padding-left: 17px;
+                padding-right: 18px;
+                transform: translate(0,0px);
+        }
+
+        }
+        .p-hero__border {
+            width: 100%;
+            height: 1px;
+            max-width: 888px;
+            margin-left: 0px;
+            margin-top: 18px;
+            background-color : g.$color-white;
+        }
+    }
+}
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+}
+
+@include g.mq('-md') {
+    @include g.webpBg('.p-hero .p-hero__background', '../images/hero/main_visual-sp' );
+    .p-hero {
+        height: 481px;
+        .p-hero__background {
+            height: calc( 481px);
+            aspect-ratio: 375/481;
+            z-index: -1;
+        }
+
+        .p-hero__content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: auto;
+            transform: none;
+            width: 100%;
+            max-width: calc( 375px - 12px - 15px );
+            text-align: left;
+            margin-top: 132px;
+            transform:translate(-1px,0);
+            .p-hero__headline {
+                line-height: g.vwclamp(28,31,31);
+                span {
+                    font-size: g.vwclampsp(20,24,24);
+                    padding-left: 13px;
+                    line-height: 39px;
+                    letter-spacing: 0px;
+                }
+                &:first-child{
+                    span {
+                        transform:translate(0,-1px);
+                    }
+
+                }
+                &:nth-child(n+2){
+                    letter-spacing: 2px;
+                    margin-top: 8px;
+                    line-height: 31px;
+                    span {
+                        padding-left: 11px;
+                        transform:translate(0,-2px);
+                        line-height: 37px;
+                    }
+                }
+        }
+            .p-hero__lead {
+                text-align: left;
+                margin-left: 0px;
+                margin-top: g.vwclampsp(12,16,16);
+                font-size: g.vwclampsp(12,16,16);
+                line-height: g.vwclampsp(18,23,23);
+                letter-spacing: 0;
+                transform:translate(-1px,0);
+                span{
+                    line-height: 32px;
+                    padding-left:14px;
+                    padding-right: 14px;
+                    transform:translate(0,-1px);
+                }
+            }
+    
+        }
+    }
+}

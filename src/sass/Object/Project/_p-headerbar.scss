@@ -1,0 +1,284 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    ヘッダーメニューバー
+//------------------------------------------------
+.p-headerbar {
+    width: 100%;
+    height: g.$header-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+
+.p-headerbar__inner {
+    width: 100%;
+    max-width: calc( 1220px );
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+//  左寄せの枠
+.p-headerbar__startwrapper {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    height: 100%;
+}
+//  中央寄せの枠
+.p-headerbar__centerwrapper {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    margin-right: 18px;
+}
+//  右寄せの枠
+.p-headerbar__endwrapper {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 100%;
+    margin-right: 25px;
+}
+
+.p-headerbar__menulist {
+    width: fit-content;
+    margin-left: g.vwclamp(-2, -2,-2);
+    ul {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        gap : 36px;
+        .p-headerbar__menuitem {
+            display:flex;
+            position:relative;
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 14px;
+            letter-spacing: g.rem(-0.25);
+            white-space: nowrap;
+            transition: color 0.3s;
+            a{
+                display : flex;
+                flex-direction : column;
+                transition: filter 0.3s;
+                span{
+                    transition: color 0.3s, filter 0.3s;
+                    &:nth-child(2){
+                        margin-top: -2px;
+                        margin-left:-5px;
+                        font-size: g.vwclamp(10,10, 12);
+                        font-family : g.$font-Lora;
+                        color :g.$color-font-y;
+                    }
+                }
+            }
+            &:hover {
+                $hcolb: rgba(255,160,0,1);
+                $hcol : rgba(0,0,0,0.9);
+                $hcol2 : rgba(255,160,0,1);
+                a{
+                    span{
+                        color :g.$color-white;
+                        filter: drop-shadow(0px 0px 1px $hcol) drop-shadow(0px 0px 2px $hcol) drop-shadow(0px 0px 20px $hcol2);
+                    }
+                }
+            }
+            
+            &:after{
+                display : inline-block;
+                content : "";
+                width: g.rem(16);
+                height: g.rem(16);
+                background-image: url(../images/header/pepicons_triangle-down-filled.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                transform: translate( 5px , 4px );
+                transition : transform 0.3s;
+        
+            }
+
+            &:nth-child(1){
+            }
+            &:nth-child(2){
+            }
+            &:nth-child(3){
+            }
+        }
+    }
+}
+
+
+.p-headerbar__logo {
+    margin-left: g.vwmax(20);
+    width: 113px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    a{
+        aspect-ratio: 113/45;
+    }
+}
+
+.p-headerbar__buttonarea {
+    margin-right: g.vwclamp( 0, 20, 20 );
+    margin: auto;
+    font-family: g.$baseFont;
+    display: flex;
+    flex-direction : row;
+    .p-button__lineframe{
+        margin-top: 0px;
+        margin-right: 28px;
+    }
+
+    .p-hamburger__wrapper {
+        display: none;
+    }
+    .icon-cart{
+        i{
+            margin-top:-9px;
+            transform:translate( -4px, 0 );
+        }
+    }
+}
+
+//============================================
+//  レスポンシブ
+//============================================
+@include g.mq('-lg') {    
+    .p-headerbar__logo {
+        width: 120px;
+    
+    }
+    .p-headerbar__menulist {
+        ul{
+            .p-headerbar__menuitem {
+            }
+        }
+    }
+
+    .p-headerbar__buttonarea {
+        margin-right: 0px;
+        .p-button__cv {
+            padding: 0 18px 0 20px;
+            font-size: g.rem(14);
+            white-space: nowrap;
+            width: g.vwclamp( 120, 168, 168, map-get(g.$bp_bs5, 'lg') );
+        }
+    }
+    
+}
+
+@include g.mq('-md') {
+    .p-headerbar {
+        height: g.$header-height-sp;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 1);
+    }
+    
+    .p-headerbar__inner {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }    
+
+    //  一般的なメニュー非表示の場合
+    .p-headerbar__menulist {
+        //display: none;
+        display: flex;
+        justify-content:center;
+        width: 100%;
+        ul{
+            .p-headerbar__menuitem {
+                font-size: g.rem(14);
+                &:nth-child(n+3){
+                    display:none;
+                }
+            }
+        }
+    }
+    
+    //  メニューが二段目に移動する場合
+    .p-headerbar__centerwrapper {
+        display:flex;
+        position : fixed;
+        top: g.$header-height-sp;
+        flex-direction: row;
+        align-items:center;
+        width: 100%;
+        height: g.$header-second-height-sp;
+        background-color: g.$color-lightgray;
+    }
+
+    //  左寄せの枠
+    .p-headerbar__startwrapper {
+        width: 100%;
+        gap: 34px;
+        .p-hamburger__wrapper {
+            .p-hamburger{
+                margin-right: 19px;
+            }
+        }
+
+    }
+
+    //  右寄せの枠
+    .p-headerbar__endwrapper {
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        height: 100%;
+        margin-right: 8px;
+    }
+
+    
+    .p-headerbar__logo {
+        margin:auto;
+        width: 96px;
+        height: 37px;
+        a{
+            aspect-ratio: 96/37;
+        }
+    }
+    .p-headerbar__buttonarea {
+        margin-left: 0px;
+        margin-right: g.vwsp(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        #btnContact{
+            display:none;
+        }
+        .p-button__cv {
+            display:none;
+        }
+        .p-hamburger__wrapper {
+            display: block;
+            .p-hamburger{
+            }
+        }
+
+        .icon-download{
+            margin-top : 4px;
+            margin-left: g.vwsp(10);
+        }
+        .icon-cart{
+            margin-top : 4px;
+            margin-left:g.vwsp(8);
+            i{
+                margin-top: 2px;
+                transform : translate( 0px, 0 );
+            }
+        }
+    }// p-headerbar__buttonarea
+}

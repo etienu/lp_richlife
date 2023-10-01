@@ -1,0 +1,17 @@
+@use "../../global" as g;
+
+/*--------------------------------------------------
+    トップに戻るボタン
+--------------------------------------------------*/
+.js-gotoTop__Wrapper {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 0px;
+    bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    z-index: 100;
+}

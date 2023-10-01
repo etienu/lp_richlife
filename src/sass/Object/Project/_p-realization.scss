@@ -1,0 +1,139 @@
+@use "../../global" as g;
+//------------------------------------------------
+//    
+//------------------------------------------------
+.p-real5 {
+}
+
+.p-real5__inner {
+    margin: auto;
+    width: 100%;
+    max-width: calc(1440px - ( 180px + 179px));
+    color: g.$color-font-b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:80px;
+    margin-bottom:82px;
+}
+
+.p-real5__gridwrapper{
+    display:flex;
+    flex-direction: row;
+    gap : g.vwclamp( 40, 60, 60 );
+}
+
+.p-real5__gridgroup{
+    display:flex;
+    flex-direction: row;
+    justify-content :center;
+    gap : g.vwclamp( 40, 60, 60 );
+    margin-top : 62px;
+}
+
+.p-real5__grid{
+    width: 100%;
+    max-width: 168px;
+}
+
+.p-real5__gridhead{
+    font-size: g.rem( 18 );
+    background-color : g.$color-gold;
+    color : g.$color-font-w;
+    letter-spacing: -0.5px;
+    span{
+        display:inline-block;
+        margin-left: -9px;
+        margin-top: 1px;
+    }
+}
+
+.p-real5__gridimage{
+    width: 100%;
+    height: 168px;
+    margin: 0 auto;
+}
+
+.p-real5__gridlead{
+    font-size: g.rem(16);
+    text-align:left;
+    margin-top: 3px;
+    line-height: 23px;
+}
+
+
+//----------------------------------------
+//  レスポンシブ
+//----------------------------------------
+@include g.mq('-lg') {
+    .p-real5__gridwrapper{
+        flex-direction: column;
+    }
+    .p-real5__gridwrapper{
+        gap : 0;
+    }
+
+}
+
+@include g.mq('-md') {
+    .p-real5__inner {
+        margin: auto;
+        width: 100%;
+        max-width: calc( 100% - 23px );
+        margin-top:32px;
+        margin-bottom:33px;
+        ul{
+            gap: 7px;
+            row-gap: 24px;
+        }
+    }
+
+    .p-real5__gridgroup{
+        gap : g.vwclamp( 40, 60, 60 );
+        margin-top : 30px;
+        &:nth-child(2){
+            margin-top:24px;
+        }
+    }
+
+    .p-real5__grid{
+        max-width: 112px;
+        display:flex;
+        flex-direction :column;
+        justify-content: flex-start;
+        .p-real5__gridhead{
+            padding-bottom: 2px;
+            font-size: g.rem( 16 );
+            span{
+                margin-left: -9px;
+                margin-top: 3px;
+                font-weight: 400;
+            }
+        }
+        
+        .p-real5__gridimage{
+            width: 112px;
+            height: 112px;
+        }
+        
+        .p-real5__gridlead{
+            font-size: g.rem(14);
+            text-align:left;
+            margin-top: 0px;
+            line-height: 20px;
+            width: 91%;
+        }
+
+        &[data-style="wide"]{
+            max-width: 157px;
+            margin-left: 3px;
+            .p-real5__gridlead{
+                width: 100%;
+            }
+        }
+        &:nth-child(5){
+            margin-left: 1px;
+        }
+    }
+    
+}

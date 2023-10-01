@@ -1,0 +1,54 @@
+//  googlefonts
+//  Noto Serif JP
+@font-face {
+    font-family: 'Noto Serif JP';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../webfonts/googlefonts/NotoSerifJP/NotoSerifJP-Regular.woff2") format("woff2"),
+    url("../webfonts/googlefonts/NotoSerifJP/NotoSerifJP-Regular.woff") format("woff"),
+    url("../webfonts/googlefonts/NotoSerifJP/NotoSerifJP-Regular.otf") format("truetype");
+    font-display: swap;
+}
+
+//  Noto Sans JP
+@font-face {
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../webfonts/googlefonts/Noto_Sans_JP/static/NotoSansJP-Medium.woff2") format("woff2"),
+    url("../webfonts/googlefonts/Noto_Sans_JP/static/NotoSansJP-Medium.ttf") format("truetype");
+    font-display: swap;
+}
+
+/*
+//  Lora
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../webfonts/googlefonts/Lora/static/Lora-Medium.woff2") format("woff2"),
+    url("../webfonts/googlefonts/Lora/static/Lora-Medium.woff") format("woff"),
+    url("../webfonts/googlefonts/Lora/static/Lora-Medium.ttf") format("truetype");
+    font-display: swap;
+}
+*/
+//  Hind
+@font-face {
+    font-family: 'Hind';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: //url("../webfonts/googlefonts/Hind/Hind-Medium.woff2") format("woff2"),
+//    url("../webfonts/googlefonts/Hind/Hind-Medium.woff") format("woff"),
+    url("../webfonts/googlefonts/Hind/Hind-Medium.ttf") format("truetype");
+    font-display: swap;
+}
+
+/*
+本文：Noto Serif JP
+見出しなど：Noto Serif JP
+数字：Lora
+*/
